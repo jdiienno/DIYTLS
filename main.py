@@ -166,7 +166,7 @@ if not isVerified:
 else:
     print("Alice verified Bob's message using the GCM tag!")
 
-# Now do the RSA verifiaction
+# Now do the RSA verification
 print("Alice Received Message [RSA Signed]: '" + alice.receiveEncryptedMessage(tMsg)[0] + "'")
 if not alice.verifyRsaSignature(tMsg, sig):
     print("Alice could not verify Bob's message using the RSA Signature")
