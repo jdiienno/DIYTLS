@@ -17,7 +17,7 @@ alice.partnerData.rsaKey = bob.publicData.rsaKey
 bob.partnerData.rsaKey = alice.publicData.rsaKey
 
 # DHKE Key exchange: ***************************************************************************************************
-# Get Values: **********************************************************************************************************
+# Get Values
 print()
 print('Getting Elliptic Curve Values...')
 ecCurve = 'secp384r1'
@@ -25,6 +25,7 @@ alice.curveParams.defineEllipticCurve(ecCurve)
 bob.curveParams.defineEllipticCurve(ecCurve)
 
 # Do DHKE: *************************************************************************************************************
+print()
 print('Doing ECDHKE for Key values...')
 
 # Get Alice's and Bob's private values
@@ -37,7 +38,7 @@ print('Calculating DHKE Public Points...')
 alice.calculatePublicDHKEPoints()
 bob.calculatePublicDHKEPoints()
 
-# Send Points: *********************************************************************************************************
+# Send Alice's point to Bob
 print('Sending Public Points...')
 axMsg = alice.generateRsaSignature(alice.publicData.dhke_point)
 
