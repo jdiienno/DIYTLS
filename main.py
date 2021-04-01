@@ -16,7 +16,7 @@ bob.generateRSAKey(3072)
 alice.partnerData.rsaKey = bob.publicData.rsaKey
 bob.partnerData.rsaKey = alice.publicData.rsaKey
 
-# DHKE Key exchange: ***************************************************************************************************
+# Define EC: **********************************************************************************************************
 # Get Values
 print()
 print('Getting Elliptic Curve Values...')

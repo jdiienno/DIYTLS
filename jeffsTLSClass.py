@@ -82,7 +82,7 @@ class new(object):
 
     def genereateEncryptedMessage(self, msg):
         # Will encrypt and generate the tag
-        cipher = AES.new(self.privateData.keyAsHash, AES.MODE_GCM, nonce=self.privateData.AES_nonce)
+        cipher = AES.new(self.privateData.key, AES.MODE_GCM, nonce=self.privateData.AES_nonce)
         eMsg, tag = cipher.encrypt_and_digest(bytearray(msg.encode('utf-8')))
         return eMsg, tag
 
@@ -100,7 +100,7 @@ class new(object):
         return verified
 
     def receiveEncryptedMessage(self, msgIn, tag=-1):
-        cipher = AES.new(self.privateData.keyAsHash, AES.MODE_GCM, nonce=self.privateData.AES_nonce)
+        cipher = AES.new(self.privateData.key, AES.MODE_GCM, nonce=self.privateData.AES_nonce)
         verified = False
         if tag != -1:
             # Decrypt AND verify
@@ -108,7 +108,7 @@ class new(object):
                 msg = convertBytesToString(cipher.decrypt_and_verify(msgIn, tag))
                 verified = True
             except:
-                cipher = AES.new(self.privateData.keyAsHash, AES.MODE_GCM, nonce=self.privateData.AES_nonce)
+                cipher = AES.new(self.privateData.key, AES.MODE_GCM, nonce=self.privateData.AES_nonce)
                 msg = convertBytesToString(cipher.decrypt(msgIn))
         else:
             # Decrypt
@@ -125,8 +125,7 @@ class new(object):
 
         S = eca.multiplyPoint(a, X, Y, Q, A, B)
 
-        self.privateData.key = S[0]
-        self.privateData.keyAsHash = hashlib.sha256(str(S[0]).encode('utf-8')).digest()
+        self.privateData.key = hashlib.sha256(str(S[0]).encode('utf-8')).digest()
 
         return S
 
@@ -149,7 +148,7 @@ class privateData(object):
         self.rsaKey = []
         self.dhValue = []
         self.dhNonce = []
-        self.keyAsHash = []
+        self.key = []
         self.AES_nonce = []
 
 class publicData(object):
