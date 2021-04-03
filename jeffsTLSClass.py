@@ -184,7 +184,7 @@ class curveParams(object):
             self.Gx = 0xb70e0cbd6bb4bf7f321390b94a03c1d356c21122343280d6115c1d21
             self.Gy = 0xbd376388b5f723fb4c22dfe6cd4375a05a07476444d5819985007e34
             self.N = 0xffffffffffffffffffffffffffff16a2e0b8f03e13dd29455c5c2a3d
-        elif ecIn == 'P-256' or ecIn == 'secp224r1':
+        elif ecIn == 'P-256' or ecIn == 'secp256r1':
             self.Q = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff
             self.A = 0xffffffff00000001000000000000000000000000fffffffffffffffffffffffc
             self.B = 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b
